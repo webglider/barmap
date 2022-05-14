@@ -15,6 +15,7 @@ struct dentry  *file1;
  
 int my_mmap(struct file *filp, struct vm_area_struct *vma)
 {
+    pr_info("barmap mmap called");
     unsigned long bar_start = 0x208fe0000000UL; // Starting physical address of BAR space
     unsigned long bar_size = 256UL*1024*1024; // BAR size in bytes
     unsigned long size   = vma->vm_end - vma->vm_start;
@@ -34,6 +35,7 @@ int my_mmap(struct file *filp, struct vm_area_struct *vma)
         return -EINVAL;
     }
 
+    pr_info("barmap mmap successful");
     return 0;
 }
  
