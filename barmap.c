@@ -59,7 +59,7 @@ static const struct file_operations my_fops = {
  
 static int __init mmapexample_module_init(void)
 {
-    file1 = debugfs_create_file(DEV_NAME, 0644, NULL, NULL, &my_fops);
+    file1 = debugfs_create_file_unsafe(DEV_NAME, 0644, NULL, NULL, &my_fops);
     return 0;
 }
  
